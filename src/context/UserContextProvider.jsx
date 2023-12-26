@@ -7,6 +7,7 @@ const UserContextProvider = ({ children }) => {
   const [city, setCity] = useState("delhi");
   const [cityName, setCityName] = useState("");
 
+  // Fetching API Data 
   useEffect(() => {
     const fetchWeatherData = async () => {
       const url =
@@ -14,7 +15,7 @@ const UserContextProvider = ({ children }) => {
       const options = {
         method: "GET",
         headers: {
-          "X-RapidAPI-Key": "2582018af1msh3ea5727f74e3ee1p146c53jsn498d8ef0c848",
+          "X-RapidAPI-Key": import.meta.env.VITE_API_KEY,
           "X-RapidAPI-Host": "weather-by-api-ninjas.p.rapidapi.com",
         },  
       };
@@ -40,13 +41,5 @@ const UserContextProvider = ({ children }) => {
     </UserContext.Provider>
   );
 };
-
-// export const useWeather = () => {
-//     const weatherData = useContext(UserContext);
-//     if (!weatherData) {
-//       throw new Error('useWeather must be used within a WeatherProvider');
-//     }
-//     return weatherData;
-//   };
 
 export default UserContextProvider;
